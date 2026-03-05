@@ -63,7 +63,7 @@ async function createAlbum(req,res){
 
         if(user.role !== "artist"){
             return res.status(403).json({
-                message: "You are not allowed to create music"
+                message: "You are not allowed to create album"
             })
         }
 
