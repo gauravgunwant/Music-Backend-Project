@@ -73,7 +73,17 @@ async function getAllAlbum(req,res) {
 }
 
 async function getAlbumMusic(req,res){
-
+    // ?page=page&limit=limit, added pagination  logic so that all music doesn't load at once!
+    const {page, limit} = req.query;
+    console.log(page,limit)
+    const id = req.params;
+    
+    const albums = await albumModel.findById(id.id).select("title artist musics")
+    
+    res.status(200).json({
+        message: "Album fetched successfully",
+        albums
+    })
 }
 
 export default {createMusic,createAlbum,getAllMusic,getAllAlbum,getAlbumMusic};
