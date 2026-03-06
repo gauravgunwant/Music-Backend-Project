@@ -86,4 +86,12 @@ async function userLogin(req,res){
     })
 }
 
-export default {userRegister,userLogin};
+
+async function userLogout(req,res){
+    res.clearCookie("token");
+    res.status(200).json({
+        message: "Successfully logout!"
+    })
+}
+
+export default {userRegister,userLogin,userLogout};
