@@ -7,8 +7,8 @@ const router = express.Router();
 
 const upload = multer({storage: multer.memoryStorage()})
 
-router.post("/upload",authMiddleware.verifyToken, upload.single("music") ,musicController.createMusic)
-router.post("/create-album",authMiddleware.verifyToken,musicController.createAlbum);
-router.get("/", musicController.getAllMusic);
+router.post("/upload",authMiddleware.artistAuth, upload.single("music") ,musicController.createMusic)
+router.post("/create-album",authMiddleware.artistAuth,musicController.createAlbum);
+router.get("/", authMiddleware.userAuth,musicController.getAllMusic);
 
 export default router;
