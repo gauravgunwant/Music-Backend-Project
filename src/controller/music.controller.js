@@ -1,7 +1,7 @@
 import musicModel from "../model/music.model.js";
 import albumModel from "../model/album.model.js";
 import uploadFileIMGKIT from "../service/storage.service.js";
-import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
 async function createMusic(req,res){
     const {title}  = req.body;
@@ -40,4 +40,13 @@ async function createAlbum(req,res){
     });
 }
 
-export default {createMusic,createAlbum};
+async function getAllMusic(req,res){
+    const musics = await musicModel.find().select("uri title artist").populate("artist", "username");
+
+    res.status(200).json({
+        message: "Music fetched successfully",
+        musics
+    })
+}   
+
+export default {createMusic,createAlbum,getAllMusic};
