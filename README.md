@@ -149,10 +149,10 @@ Local development:
 http://localhost:3000
 ```
 
-Production (example):
+Production (Live URL):
 
 ```
-https://your-deployment-url.com
+https://your-deployment-url.com](https://music-backend-project.onrender.com
 ```
 
 ---
@@ -481,6 +481,6 @@ npm run start
 
 This project is deployed using **Render**.
 
-Live Project Link: 
+Live Project Link: https://music-backend-project.onrender.com
 
 ---
