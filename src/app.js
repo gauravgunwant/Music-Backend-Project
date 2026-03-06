@@ -8,5 +8,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/api/auth", authRouter);
 app.use("/api/music", musicRouter);
+app.get("/", (req,res)=>[
+    res.json({
+        message: "Refer to Github: https://github.com/gauravgunwant/Music-Backend-Project to use it!"
+    })
+])
 
 export default app;
