@@ -41,7 +41,15 @@ async function createAlbum(req,res){
 }
 
 async function getAllMusic(req,res){
-    const musics = await musicModel.find().select("uri title artist").populate("artist", "username");
+
+    // ?page=page&limit=limit, added pagination  logic so that all music doesn't load at once!
+    const {page, limit} = req.query;
+    console.log(page,limit)
+
+    const musics = await musicModel.find()
+    .limit(limit)
+    .skip((page-1)*limit)
+    .select("uri title artist").populate("artist", "username");
 
     res.status(200).json({
         message: "Music fetched successfully",
