@@ -1,7 +1,6 @@
 import musicModel from "../model/music.model.js";
 import albumModel from "../model/album.model.js";
 import uploadFileIMGKIT from "../service/storage.service.js";
-import mongoose from "mongoose";
 
 async function createMusic(req,res){
     const {title}  = req.body;
@@ -57,4 +56,24 @@ async function getAllMusic(req,res){
     })
 }   
 
-export default {createMusic,createAlbum,getAllMusic};
+async function getAllAlbum(req,res) {
+    // ?page=page&limit=limit, added pagination  logic so that all music doesn't load at once!
+    const {page, limit} = req.query;
+    console.log(page,limit)
+
+    const albums = await albumModel.find()
+    .limit(limit)
+    .skip((page-1)*limit)
+    .select("title artist")
+
+    res.status(200).json({
+        message: "Album fetched successfully",
+        albums
+    })
+}
+
+async function getAlbumMusic(req,res){
+
+}
+
+export default {createMusic,createAlbum,getAllMusic,getAllAlbum,getAlbumMusic};

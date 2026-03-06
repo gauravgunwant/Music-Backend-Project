@@ -10,5 +10,7 @@ const upload = multer({storage: multer.memoryStorage()})
 router.post("/upload",authMiddleware.artistAuth, upload.single("music") ,musicController.createMusic)
 router.post("/create-album",authMiddleware.artistAuth,musicController.createAlbum);
 router.get("/", authMiddleware.userAuth,musicController.getAllMusic);
+router.get("/album", authMiddleware.userAuth,musicController.getAllAlbum);
+router.get("/album/:id", authMiddleware.userAuth,musicController.getAlbumMusic);
 
 export default router;
