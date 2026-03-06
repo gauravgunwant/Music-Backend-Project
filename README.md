@@ -1,4 +1,4 @@
-# Music Streaming Backend API
+# Music Backend API
 
 A **role-based backend API** for a music streaming platform built with **Node.js, Express, and MongoDB**.  
 This project provides authentication, music upload, album management, and secure role-based access using **JWT and cookies**.
