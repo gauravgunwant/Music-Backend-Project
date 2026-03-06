@@ -11,7 +11,6 @@ function artistAuth(req, res, next) {
 
   try {
     const user = jwt.verify(token, process.env.JWT_TOKEN);
-    console.log(user.role);
 
     if (user.role !== "artist") {
       return res.status(403).json({
@@ -41,7 +40,6 @@ function userAuth(req,res,next){
     try {
 
         const user = jwt.verify(token,process.env.JWT_TOKEN);
-        console.log(user.role);
         if(user.role !== "artist" && user.role !== "user"){
             return res.status(401).json({message: "Unauthorized"})
         }

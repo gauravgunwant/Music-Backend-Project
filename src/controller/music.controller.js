@@ -43,7 +43,6 @@ async function getAllMusic(req,res){
 
     // ?page=page&limit=limit, added pagination  logic so that all music doesn't load at once!
     const {page, limit} = req.query;
-    console.log(page,limit)
 
     const musics = await musicModel.find()
     .limit(limit)
@@ -59,7 +58,6 @@ async function getAllMusic(req,res){
 async function getAllAlbum(req,res) {
     // ?page=page&limit=limit, added pagination  logic so that all music doesn't load at once!
     const {page, limit} = req.query;
-    console.log(page,limit)
 
     const albums = await albumModel.find()
     .limit(limit)
@@ -75,7 +73,6 @@ async function getAllAlbum(req,res) {
 async function getAlbumMusic(req,res){
     // ?page=page&limit=limit, added pagination  logic so that all music doesn't load at once!
     const {page, limit} = req.query;
-    console.log(page,limit)
     const id = req.params;
     
     const albums = await albumModel.findById(id.id).select("title artist musics")
